@@ -1,0 +1,16 @@
+<form [formGroup]="categoryFormGrup">
+    <div class="mb-3">
+        <label for="InputName" class="form-label">Name</label>
+        <input type="text" formControlName="categoryName" class="form-control" id="InputName">
+        @if (categoryFormGrup.get('categoryName')?.errors?.['required'])
+        {
+        <span class="text-danger">Email is required</span>
+
+        }
+        @if (categoryFormGrup.get('categoryName')?.errors?.['minlength'])
+        {
+        <span class="text-danger">minimon length is 5 chars</span>
+        }
+    </div>
+    <button (click)="addCategory()" class="btn btn-primary" [disabled]="categoryFormGrup.invalid">Add</button>
+</form>

@@ -1,0 +1,17 @@
+<form [formGroup]="sectorFormGrup">
+    <div class="mb-3">
+        <label for="InputName" class="form-label">Name</label>
+        <input type="text" formControlName="sectorName" class="form-control" id="InputName">
+        @if (sectorFormGrup.get('sectorName')?.errors?.['required'])
+        {
+        <span class="text-danger">Name is required</span>
+
+        }
+        @if (sectorFormGrup.get('sectorName')?.errors?.['minlength'])
+        {
+        <span class="text-danger">minimon length is 5 chars</span>
+        }
+    </div>
+
+    <button (click)="addSector()" class="btn btn-primary" [disabled]="sectorFormGrup.invalid">Add</button>
+</form>

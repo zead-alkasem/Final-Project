@@ -1,0 +1,34 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="table-tr">Id</th>
+            <th class="table-tr">Name</th>
+            <th class="table-tr">Category Id</th>
+            <th class="table-tr">Sector Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of kindList$ | async; track item.kindId ) {
+        <tr>
+            <td>{{item.kindId}}</td>
+            <td>{{item.kindName}}</td>
+            <td>{{item.categoryId}}</td>
+            <td>{{item.sectorId}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<!-- ADD -->
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Add</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add/Update Kind</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-ad-ed-kind (closeModel)="closeModal()"></app-ad-ed-kind>
+    </div>
+</ng-template>

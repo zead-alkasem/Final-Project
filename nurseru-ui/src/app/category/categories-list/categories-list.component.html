@@ -1,0 +1,30 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="table-tr">Id</th>
+            <th class="table-tr">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of categoryList$ | async; track item.categoryId ) {
+        <tr>
+            <td>{{item.categoryId}}</td>
+            <td>{{item.categoryName}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<!--Add-->
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Add</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add/Update categoy</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-ad-ed-category (closeModel)="closeModal()"></app-ad-ed-category>
+    </div>
+</ng-template>
